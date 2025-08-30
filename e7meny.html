@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>احميني - منصة الحماية ضد التحرش والتنمر الإلكتروني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* أنماط عامة */
+        :root {
+            --primary-color: #4A86E8;
+            --secondary-color: #8E44AD;
+            --accent-color: #FF6B6B;
+            --light-color: #F8F9FA;
+            --dark-color: #2C3E50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* الشعار */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* شريط التنقل */
+        nav {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-text {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* قسم البطل */
+        .hero {
+            background: linear-gradient(rgba(74, 134, 232, 0.8), rgba(142, 68, 173, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234A86E8" opacity="0.1"/><path d="M0 0L100 100" stroke="%234A86E8" stroke-width="2" opacity="0.2"/></svg>');
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        /* الأقسام */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-size: 36px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        /* خدمات */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        /* إحصائيات */
+        .stats {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* قصص النجاح */
+        .success-stories {
+            background-color: #f0f4f8;
+        }
+        
+        .stories-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .story-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        
+        /* نموذج الإبلاغ */
+        .report-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 134, 232, 0.2);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* التذييل */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: right;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: var(--accent-color);
+        }
+        
+        .footer-section p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        /* responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="logo-text">احميني</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عن المنصة</a></li>
+                <li><a href="#services">خدماتنا</a></li>
+                <li><a href="#stories">قصص النجاح</a></li>
+                <li><a href="#report">الإبلاغ</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- قسم البطل -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>معًا ضد التحرش والتنمر الإلكتروني</h1>
+            <p>منصة "احميني" تهدف إلى توفير بيئة آمنة للجميع ومكافحة كافة أشكال التحرش والتنمر الإلكتروني من خلال التوعية .</p>
+            <a href="#report" class="btn">إبلاغ عن حادثة</a>
+        </div>
+    </section>
+
+    <!-- عن المنصة -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">عن منصة احميني</h2>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 30px; font-size: 18px;">"احميني" هي منصة إلكترونية تهدف إلى مكافحة التحرش والتنمر الإلكتروني بكافة أشكالهما. نحن نؤمن بأن لكل فرد الحق في العيش والعمل في بيئة آمنة خالية من المضايقات. نقدم الدعم القانوني والنفسي للضحايا، ونعمل على نشر التوعية حول هذه القضايا الهامة.</p>
+            
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-eye"></i></div>
+                    <h3>رؤيتنا</h3>
+                    <p>مجتمع آمن خالٍ من التحرش والتنمر الإلكتروني، حيث يتمتع الجميع بحقوق متساوية واحترام متبادل.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>رسالتنا</h3>
+                    <p>توفير الدعم والحماية للضحايا، ونشر الوعي المجتمعي، والعمل على تغيير السلوكيات السلبية.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>شراكاتنا</h3>
+                    <p>نعمل مع جهات حكومية ومنظمات مجتمع مدني ومختصين نفسيين وقانونيين لتقديم أفضل الخدمات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الخدمات -->
+    <section id="services" style="background-color: #f0f4f8;">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h3>الدعم النفسي</h3>
+                    <p>نوفر استشارات نفسية من قبل مختصين لمساعدة الضحايا على تجاوز الآثار السلبية للتحرش والتنمر.</p>
+                    <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 16px; margin-top: 15px;">اطلب المساعدة</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>الدعم القانوني</h3>
+                    <p>نقدم استشارات قانونية ونساعد في اتخاذ الإجراءات القانونية ضد المتحرشين والمتنمرين.</p>
+                    <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 16px; margin-top: 15px;">استشارة قانونية</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>التوعية والتدريب</h3>
+                    <p>ننظم حملات توعوية وندوات وورش عمل لتعزيز الوعي حول مخاطر التحرش والتنمر الإلكتروني.</p>
+                    <a href="#contact" class="btn" style="padding: 10px 20px; font-size: 16px; margin-top: 15px;">انضم إلى ورشتنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- إحصائيات -->
+    <section class="stats">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">في أرقام</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">76%</div>
+                    <div class="stat-text">من المستخدمين تعرضوا لشكل من أشكال التنمر الإلكتروني</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1 من كل 4</div>
+                    <div class="stat-text">نساء يتعرضن للتحرش في مكان العمل</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">64%</div>
+                    <div class="stat-text">من الضحايا لا يبلغون عن الحوادث التي يتعرضون لها</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-text">حالة تم مساعدتها عبر منصتنا هذا العام</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قصص النجاح -->
+    <section id="stories" class="success-stories">
+        <div class="container">
+            <h2 class="section-title">قصص النجاح</h2>
+            <div class="stories-container">
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <h3>سارة أحمد</h3>
+                            <p>معلمة</p>
+                        </div>
+                    </div>
+                    <p>"لقد ساعدتني منصة احميني في التغلب على تجربة التنمر الإلكتروني التي مررت بها، ووفرت لي الدعم القانوني والنفسي اللازم."</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <h3>محمد السيد</h3>
+                            <p>طالب جامعي</p>
+                        </div>
+                    </div>
+                    <p>"استشرت منصة احميني في حالة تحرش تعرضت لها أختي، وقدموا لنا الدعم الكامل وساعدونا في اتخاذ الإجراءات القانونية المناسبة."</p>
+                </div>
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-avatar"><i class="fas fa-user"></i></div>
+                        <div>
+                            <h3>فاطمة عمر</h3>
+                            <p>موظفة</p>
+                        </div>
+                    </div>
+                    <p>"ورشة العمل التي قدمتها احميني ساعدتني في فهم حقوقي وكيفية التعامل مع حالات التحرش في مكان العمل، أشكركم على هذه المبادرة."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نموذج الإبلاغ -->
+    <section id="report">
+        <div class="container">
+            <h2 class="section-title">الإبلاغ عن حادثة</h2>
+            <div class="report-form">
+                <form id="incidentForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentType">نوع الحادثة</label>
+                        <select id="incidentType" class="form-control" required>
+                            <option value="">اختر نوع الحادثة</option>
+                            <option value="harassment">تحرش</option>
+                            <option value="cyberbullying">تنمر إلكتروني</option>
+                            <option value="discrimination">تمييز</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentDetails">تفاصيل الحادثة</label>
+                        <textarea id="incidentDetails" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="evidence">إرفاق أدلة (اختياري)</label>
+                        <input type="file" id="evidence" class="form-control" multiple>
+                    </div>
+                    <button type="submit" class="btn">إرسال البلاغ</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- اتصل بنا -->
+    <section id="contact" style="background-color: #f0f4f8;">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>معلومات التواصل</h3>
+                    <p><i class="fas fa-envelope"></i> البريد الإلكتروني: info@ahmeeny.com</p>
+                    <p><i class="fas fa-phone"></i> الهاتف: 01001234567+</p>
+                    <p><i class="fas fa-map-marker-alt"></i> العنوان: مصر الجديده ,القاهره ,مصر </p>
+                </div>
+                <div class="footer-section">
+                    <h3>وسائل التواصل الاجتماعي</h3>
+                    <p>تابعنا على منصات التواصل الاجتماعي</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>النشرة البريدية</h3>
+                    <p>اشترك في نشرتنا البريدية لتصلك آخر الأخبار والتحديثات</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="بريدك الإلكتروني" required>
+                        </div>
+                        <button type="submit" class="btn" style="padding: 12px 20px; font-size: 16px;">اشترك الآن</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المنصة</h3>
+                    <p>منصة "احميني" هي مبادرة مجتمعية تهدف إلى مكافحة التحرش والتنمر الإلكتروني بكافة أشكالهما.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <p><a href="#home" style="color: #fff;">الرئيسية</a></p>
+                    <p><a href="#about" style="color: #fff;">عن المنصة</a></p>
+                    <p><a href="#services" style="color: #fff;">خدماتنا</a></p>
+                    <p><a href="#report" style="color: #fff;">الإبلاغ</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>الشركاء</h3>
+                    <p>وزارة الموارد البشرية</p>
+                    <p>الجمعية الوطنية لحقوق الإنسان</p>
+                    <p>مركز البلاغات الأمنية</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 منصة احميني. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // دالة لإظهار رسالة نجاح عند تقديم النموذج
+        document.getElementById('incidentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // هنا يمكنك إضافة كود لإرسال البيانات إلى الخادم
+            // لأغراض العرض، سنظهر فقط رسالة نجاح
+            
+            alert('شكراً لك على إبلاغنا. سنقوم بمراجعة بلاغك ونتواصل معك في غضون 24 ساعة.');
+            this.reset();
+        });
+        
+        // تأثير scroll السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // إضافة تأثير للعناصر عند التمرير
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.service-card, .stat-item, .story-card');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                if (position < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // تهيئة العناصر للتحريك
+        document.querySelectorAll('.service-card, .stat-item, .story-card').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        // تشغيل التحريك عند التحميل
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
